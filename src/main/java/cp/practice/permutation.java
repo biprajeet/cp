@@ -16,6 +16,7 @@ public class permutation {
 		}
 		
 		for (int i = 0; i < string.length(); i++) {
+			count++;
 			String rem = string.substring(0,i)+string.substring(i+1);
 			permutations(rem,prefix+string.charAt(i));
 		}
