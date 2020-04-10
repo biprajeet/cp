@@ -34,10 +34,54 @@ class MinStack {
     }
 }
 
+class MinStack2 {
+
+	List<Integer> stack;
+    List<Value> minstack; 
+	
+    /** initialize your data structure here. */
+    public MinStack2() {
+        stack = new ArrayList<>();
+        minstack = new ArrayList<>();
+    }
+    
+    public void push(int x) {
+        stack.add(x);
+        if(minstack.isEmpty()) minstack.add(new Value(x,0));
+        else if(x < minstack.get(minstack.size()-1).element)
+        		minstack.add(new Value(x,stack.size()-1));
+    }
+    
+    public void pop() {
+    	stack.remove(stack.size()-1);
+    	if(stack.size()==minstack.get(minstack.size()-1).startpos)
+    		minstack.remove(minstack.size()-1);
+    }
+    
+    public int top() {
+    	return stack.get(stack.size()-1);  
+    }
+    
+    public int getMin() {
+        return minstack.get(minstack.size()-1).element;
+    }
+}
+
+class Value{
+	
+	int element;
+	int startpos;
+	public Value(int element, int startpos) {
+		this.element = element;
+		this.startpos = startpos;
+	}
+	
+}
+
 class Solution{
 	
 	public static void main(String[] args) {
-		MinStack minStack = new MinStack();
+		MinStack2 minStack = new MinStack2();
 		minStack.push(-2);
 		minStack.push(0);
 		minStack.push(-3);
