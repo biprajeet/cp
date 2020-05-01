@@ -1,4 +1,4 @@
-package cp.enquire.nthfibonacci;
+package cp.practice.enquire.nthfibonacci;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
